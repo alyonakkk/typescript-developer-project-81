@@ -1,4 +1,4 @@
-name: testing and linting project
+name: project-check
 on:
   pull_request:
     branches:
