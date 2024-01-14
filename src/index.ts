@@ -1,3 +1,5 @@
-import sum from './sum';
+import Tag from './tag/Tag';
 
-console.log(sum(3, 3));
+console.log(new Tag('br').toString());
+console.log(new Tag('img', { src: 'path/to/image' }).toString());
+console.log(new Tag('input', { value: 'Save', type: 'submit', autocomplete: 'one-time-code' }).toString());
