@@ -32,3 +32,12 @@ jobs:
         run: make build
       - name: linting typescript
         run: make lint
+      - name: testing
+          run: make test
+      - name: test coverage
+        uses: paambaati/codeclimate-action@v5
+          env:
+            CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          with:
+            coverageCommand: make test-coverage
+            debug: true
