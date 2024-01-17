@@ -1,14 +1,17 @@
 install:
 	npm ci
 
+exec:
+	npm run exec
+
 develop:
 	npm run start:dev
 
-build:
-	npm run build
-
 start:
 	npm run start:build
+
+build:
+	npm run build
 
 test:
 	npm run test

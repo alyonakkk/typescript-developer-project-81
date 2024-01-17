@@ -10,7 +10,10 @@ module.exports = {
     'airbnb-base',
   ],
   parser: '@typescript-eslint/parser',
-  rules: {},
+  rules: {
+    'max-len': ['error', { code: 150 }],
+    'no-restricted-exports': ['error', { restrictDefaultExports: { direct: true } }],
+  },
   overrides: [
     {
       extends: [
