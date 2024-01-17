@@ -12,7 +12,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   rules: {
     'max-len': ['error', { code: 150 }],
-    'no-restricted-exports': ['error', { restrictDefaultExports: { direct: true } }],
+    'no-restricted-exports': ['off'],
   },
   overrides: [
     {
