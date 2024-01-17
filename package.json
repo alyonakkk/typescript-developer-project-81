@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/alyonakkk/typescript-developer-project-81/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/alyonakkk/typescript-developer-project-81/actions)",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "module": "dist/index.js",
   "scripts": {
     "start:dev": "npx nodemon",
