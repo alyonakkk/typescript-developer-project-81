@@ -18,27 +18,30 @@ export default class Form {
     return `${firstChar}${restSubstring}`;
   }
 
+  private static label(name: string): string {
+    return new Tag('label', { htmlFor: name }, Form.capitalize(name)).toString();
+  }
+
   input(name: string, options?: Option & Partial<HTMLElementTagNameMap[Tags]>): void {
     if (!this.template[name]) throw new Error('Значение поля не найдено');
 
     const { as, ...currentOptions } = options ?? {};
     const fieldType: Option['as'] = as ?? 'text';
+    const label = fieldType !== 'submit' ? Form.label(name) : '';
 
     if (fieldType === 'textarea') {
       const attr = {
         rows: 40, cols: 20, ...(currentOptions as Partial<HTMLElementTagNameMap['textarea']>), name,
       };
 
-      this.content += `${new Tag('textarea', attr, this.template[name]).toString()}`;
+      this.content += `${label}${new Tag('textarea', attr, this.template[name]).toString()}`;
     } else {
       const attr = {
-        ...(currentOptions as Partial<HTMLElementTagNameMap['input']>), type: fieldType, name, value: this.template[name],
+        name, type: fieldType, value: this.template[name], ...(currentOptions as Partial<HTMLElementTagNameMap['input']>),
       };
       const input = `${new Tag('input', attr).toString()}`;
 
       if (fieldType === 'text') {
-        const label = new Tag('label', { htmlFor: name }, Form.capitalize(name)).toString();
-
         this.content += `${label}${input}`;
       } else {
         this.content += input;
@@ -55,6 +58,6 @@ export default class Form {
 
     cb?.(form);
 
-    return new Tag('form', { action: '#', method: 'post', ...attr }, `${form.content}`).toString();
+    return new Tag('form', { ...attr, action: attr?.action ?? '#' }, `${form.content}`).toString();
   }
 }

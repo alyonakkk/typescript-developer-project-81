@@ -10,7 +10,7 @@ describe('test Form.formFor()', () => {
       f.input('name');
     });
 
-    expect(form).toBe('<form action="#" method="post"><label htmlFor="name">Name</label><input type="text" name="name" value="rob"></form>');
+    expect(form).toBe('<form method="post" action="#"><label for="name">Name</label><input name="name" type="text" value="rob"></form>');
   });
 
   test('form input with attributes', () => {
@@ -19,7 +19,7 @@ describe('test Form.formFor()', () => {
     });
 
     // eslint-disable-next-line max-len
-    expect(form).toBe('<form action="#" method="post"><label htmlFor="name">Name</label><input disabled="true" type="text" name="name" value="rob"></form>');
+    expect(form).toBe('<form method="post" action="#"><label for="name">Name</label><input name="name" type="text" value="rob" disabled="true"></form>');
   });
 
   test('form textarea', () => {
@@ -27,7 +27,7 @@ describe('test Form.formFor()', () => {
       f.input('job', { as: 'textarea' });
     });
 
-    expect(form).toBe('<form action="#" method="post"><textarea rows="40" cols="20" name="job">hexlet</textarea></form>');
+    expect(form).toBe('<form method="post" action="#"><label for="job">Job</label><textarea rows="40" cols="20" name="job">hexlet</textarea></form>');
   });
 
   test('form submit with default value', () => {
@@ -35,7 +35,7 @@ describe('test Form.formFor()', () => {
       f.submit();
     });
 
-    expect(form).toBe('<form action="#" method="post"><input type="submit" value="Save"></form>');
+    expect(form).toBe('<form method="post" action="#"><input type="submit" value="Save"></form>');
   });
 
   test('form submit with custom value', () => {
@@ -43,7 +43,7 @@ describe('test Form.formFor()', () => {
       f.submit('Wow');
     });
 
-    expect(form).toBe('<form action="#" method="post"><input type="submit" value="Wow"></form>');
+    expect(form).toBe('<form method="post" action="#"><input type="submit" value="Wow"></form>');
   });
 
   test('form', () => {
@@ -54,6 +54,6 @@ describe('test Form.formFor()', () => {
     });
 
     // eslint-disable-next-line max-len
-    expect(form).toBe('<form action="#" method="post"><label htmlFor="name">Name</label><input type="text" name="name" value="rob"><label htmlFor="job">Job</label><input type="text" name="job" value="hexlet"><input type="submit" value="Wow"></form>');
+    expect(form).toBe('<form method="post" action="#"><label for="name">Name</label><input name="name" type="text" value="rob"><label for="job">Job</label><input name="job" type="text" value="hexlet"><input type="submit" value="Wow"></form>');
   });
 });

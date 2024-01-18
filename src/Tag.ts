@@ -17,6 +17,11 @@ const SINGLE_TAGS: string[] = [
   'wbr',
 ];
 
+const ATTRS: { [attr: string]: string } = {
+  htmlFor: 'for',
+  className: 'class',
+};
+
 export type Tags = keyof HTMLElementTagNameMap;
 
 export type TagAttrs<T extends Tags> = Partial<HTMLElementTagNameMap[T]>;
@@ -31,7 +36,7 @@ export default class Tag<T extends Tags> {
   private getAttrString(): string {
     return this.attr
       ? Object.entries(this.attr)
-        .reduce((acc, [key, value]) => `${acc} ${key}="${value}"`, '')
+        .reduce((acc, [key, value]) => `${acc} ${ATTRS[key] ?? key}="${value}"`, '')
       : '';
   }
 
