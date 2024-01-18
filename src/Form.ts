@@ -29,17 +29,17 @@ export default class Form {
         rows: 40, cols: 20, ...(currentOptions as Partial<HTMLElementTagNameMap['textarea']>), name,
       };
 
-      this.content += `  ${new Tag('textarea', attr, this.template[name]).toString()}\n`;
+      this.content += `${new Tag('textarea', attr, this.template[name]).toString()}`;
     } else {
       const attr = {
         ...(currentOptions as Partial<HTMLElementTagNameMap['input']>), type: fieldType, name, value: this.template[name],
       };
-      const input = `  ${new Tag('input', attr).toString()}\n`;
+      const input = `${new Tag('input', attr).toString()}`;
 
       if (fieldType === 'text') {
         const label = new Tag('label', { htmlFor: name }, Form.capitalize(name)).toString();
 
-        this.content += `  ${label}\n${input}`;
+        this.content += `${label}${input}`;
       } else {
         this.content += input;
       }
@@ -47,7 +47,7 @@ export default class Form {
   }
 
   submit(value = 'Save'): void {
-    this.content += `  ${new Tag('input', { type: 'submit', value }).toString()}\n`;
+    this.content += `${new Tag('input', { type: 'submit', value }).toString()}`;
   }
 
   static formFor(template: Template, attr: Partial<HTMLFormElement>, cb?: (form: Form) => void): string {
@@ -55,6 +55,6 @@ export default class Form {
 
     cb?.(form);
 
-    return new Tag('form', { action: '#', method: 'post', ...attr }, `\n${form.content}`).toString();
+    return new Tag('form', { action: '#', method: 'post', ...attr }, `${form.content}`).toString();
   }
 }
