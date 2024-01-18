@@ -31,7 +31,7 @@ export default class Form {
 
     if (fieldType === 'textarea') {
       const attr = {
-        rows: 40, cols: 20, ...(currentOptions as Partial<HTMLElementTagNameMap['textarea']>), name,
+        cols: 20, rows: 40, ...(currentOptions as Partial<HTMLElementTagNameMap['textarea']>), name,
       };
 
       this.content += `${label}${new Tag('textarea', attr, this.template[name]).toString()}`;

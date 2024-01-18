@@ -27,7 +27,7 @@ describe('test Form.formFor()', () => {
       f.input('job', { as: 'textarea' });
     });
 
-    expect(form).toBe('<form method="post" action="#"><label for="job">Job</label><textarea rows="40" cols="20" name="job">hexlet</textarea></form>');
+    expect(form).toBe('<form method="post" action="#"><label for="job">Job</label><textarea cols="20" rows="40" name="job">hexlet</textarea></form>');
   });
 
   test('form submit with default value', () => {
