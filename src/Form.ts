@@ -28,16 +28,17 @@ export default class Form {
     const { as, ...currentOptions } = options ?? {};
     const fieldType: Option['as'] = as ?? 'text';
     const label = fieldType !== 'submit' ? Form.label(name) : '';
+    const value = this.template[name];
 
     if (fieldType === 'textarea') {
       const attr = {
         cols: 20, rows: 40, ...(currentOptions as Partial<HTMLElementTagNameMap['textarea']>), name,
       };
 
-      this.content += `${label}${new Tag('textarea', attr, this.template[name]).toString()}`;
+      this.content += `${label}${new Tag('textarea', attr, value).toString()}`;
     } else {
       const attr = {
-        name, type: fieldType, value: this.template[name], ...(currentOptions as Partial<HTMLElementTagNameMap['input']>),
+        name, type: fieldType, value, ...(currentOptions as Partial<HTMLElementTagNameMap['input']>),
       };
       const input = `${new Tag('input', attr).toString()}`;
 

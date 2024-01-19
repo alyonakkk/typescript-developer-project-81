@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "ES2022",                                  
     "experimentalDecorators": true,                  
-    "emitDecoratorMetadata": true,                    
-    "module": "nodenext",                                
+    "emitDecoratorMetadata": true,
+    "moduleResolution": "bundler",                            
     "baseUrl": "./",
     "declaration": true,                              
     "sourceMap": true,                                
@@ -17,5 +17,6 @@
   },
   "include": [
     "src/**/*",
+    "vitest.config.ts"
   ]
 }

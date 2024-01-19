@@ -2,7 +2,6 @@ module.exports = {
   plugins: [
     '@typescript-eslint',
   ],
-
   env: {
     node: true,
   },
